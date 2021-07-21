@@ -1,0 +1,48 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>یافتن کتاب در گروه های</h3>
+      <hr>
+    </div>
+  </div>
+  <div *ngIf="categoryData" fxFlex
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="space center"
+       fxLayoutAlign.sm="space center"
+       fxLayoutAlign.gt-sm="space center"
+       fxLayoutGap="10px">
+    <div *ngFor="let category of categoryData" >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title><h4>رشته {{category.field}}</h4> </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{category.imageUrl}}" alt="{{category.field}}">
+        <mat-card-content>
+          <p>
+            {{category.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" [routerLink]="['category', category._id]">ورود</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngIf="errMess">
+    <h2>خطا: </h2>
+    <h4>{{errMess}}</h4>
+  </div>
+
+  <div [hidden]="categoryData || errMess">
+    <mat-spinner></mat-spinner><h4>در حال بارگذاری....</h4>
+  </div>
+
+  <div fxFlex class="mb-5"></div>
+
+</div>

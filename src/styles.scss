@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'IranSans';
+  src: url("./assets/fonts/IRANSansWeb.eot") format('eot'),
+  url("./assets/fonts/IRANSansWeb.ttf") format('ttf'),
+  url("./assets/fonts/IRANSansWeb.woff") format('woff'),
+  url("./assets/fonts/IRANSansWeb.woff2") format('woff2');
+}
+*{
+  font-family: IranSans;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

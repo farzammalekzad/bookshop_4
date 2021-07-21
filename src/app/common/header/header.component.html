@@ -1,0 +1,200 @@
+<mat-toolbar fxLayout="row" color="primary">
+
+  <button mat-button *ngFor="let item of menuItems"
+          [fxShow]="item.showOnDesktop"
+          [fxShow.xs]="item.showOnMobile"
+          [fxShow.sm]="item.showOnTablet">
+    <mat-icon class="mr">{{item.icon}}</mat-icon>
+    {{item.label}}
+  </button>
+  <ng-container>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+      <ng-container *ngFor="let item of menuItems">
+        <div [fxShow]="!item.showOnDesktop"
+             [fxShow.sm]="!item.showOnTablet"
+             [fxShow.xs]="!item.showOnMobile">
+          <button mat-menu-item class="font">
+            <mat-icon class="mr">{{item.icon}}</mat-icon>
+            {{item.label}}
+          </button>
+          <mat-divider></mat-divider>
+        </div>
+      </ng-container>
+    </mat-menu>
+  </ng-container>
+</mat-toolbar>
+
+<div class="jumbotron"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutAlign.sm="start center"
+     fxLayoutAlign.gt-sm="center center"
+     fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="50%" >
+    <h1>کتاب یاب</h1>
+    <p fxHide.xs="true">مهمترین کتاب های مرجع هر رشته بصورت مجزا جهت دور زدن تحریم ها جمع آوری شده و در اختیار هموطنان عزیزم قرار می گیرد هزینه های دریافتی از دانلود کتاب ها تنها جهت نگهداری بانک اطلاعاتی و خرید کتاب های بیشتر برای شما عزیزان مورد استفاده قرار خواهد گرفت</p>
+  </div>
+  <div fxLayoutAlign="center" fxFlex fxFlex.gt-sm="50%"   >
+    <img height=100 width=120 src="/assets/img/book2.png" alt="Logo">
+  </div>
+</div>
+
+
+
+
+
+<!--
+<div>
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span>Site name</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/about-us">About us</a>
+      <a mat-button routerLink="/prices">Prices</a>
+      <a mat-button routerLink="/start-page">Start page</a>
+      <a mat-button routerLink="/offer">Offer</a>
+      <a mat-button routerLink="/contact">Contact</a>
+    </div>
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <a mat-button routerLink="/about-us">About us</a>
+        <a mat-button routerLink="/prices">Prices</a>
+        <a mat-button routerLink="/start-page">Start page</a>
+        <a mat-button routerLink="/offer">Offer</a>
+        <a mat-button routerLink="/contact">Contact</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      Awesome content
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+
+
+
+
+
+
+<mat-toolbar color="primary" >
+  <div
+    fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <span><img src="/assets/img/logo.png" height=30 width=41></span>
+  <span class="ml-3">سایت مرجع کتب فنی و مدیریتی</span>
+  <a mat-button ><span class="mr-2 fa fa-home fa-lg"></span> خانه</a>
+  <a mat-button><span class="mr-2 fa fa-mobile fa-lg"></span> اپلیکیشن در بازار</a>
+  <a mat-button><span class="mr-2 fa fa-book fa-lg"></span> درخواست کتاب</a>
+  <a mat-button><span class="mr-2 fa fa-search fa-lg"></span> جستجوی پیشرفته</a>
+  <a mat-button ><span class="mr-2 fa fa-address-card fa-lg"></span> درباره من</a>
+  <span class="flex-spacer"></span>
+  <a mat-button><span class="mr-2 fa fa-sign-in fa-lg"></span>ورود به داشبورد مدیریت</a>
+</mat-toolbar>
+
+<div>
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="siteName" routerLink="">
+
+      <span>سایت مرجع کتب فنی و مدیریتی</span>
+    </a>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="">خانه</a>
+      <a mat-button>اپلیکیشن در بازار</a>
+      <a mat-button routerLink="">درخواست کتاب</a>
+      <a mat-button routerLink="">جستجوی پیشرفته</a>
+      <span class="flex-spacer"></span>
+      <a mat-button><span class="mr-2 fa fa-sign-in fa-lg"></span>ورود به داشبورد مدیریت</a>
+    </div>
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <a mat-button routerLink="">خانه</a>
+        <a mat-button>اپلیکیشن در بازار</a>
+        <a mat-button routerLink="">درخواست کتاب</a>
+        <a mat-button routerLink="">جستجوی پیشرفته</a>
+        <a mat-button routerLink="">ورود به داشبورد مدیریت</a>
+      </div>
+    </mat-sidenav>
+
+  </mat-sidenav-container>
+</div>
+
+
+
+<div class="jumbotron"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutAlign.sm="start center"
+     fxLayoutAlign.gt-sm="center center"
+     fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="50%" >
+    <h1>کتاب یاب</h1>
+    <p>مهمترین کتاب های مرجع هر رشته بصورت مجزا جهت دور زدن تحریم ها جمع آوری شده و در اختیار هموطنان عزیزم قرار می گیرد هزینه های دریافتی از دانلود کتاب ها تنها جهت نگهداری بانک اطلاعاتی و خرید کتاب های بیشتر برای شما عزیزان مورد استفاده قرار خواهد گرفت</p>
+  </div>
+  <div fxLayoutAlign="center" fxFlex fxFlex.gt-sm="30%" fxFlexOffset="10%" class="ml-5" >
+    <img height=100 width=120 src="/assets/img/book2.png" alt="Logo">
+  </div>
+</div>
+
+
+<mat-toolbar class="mat-elevation-z10" color="primary" fxLayout="row">
+  <div>
+    <a class="valign-center" mat-icon-button [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+      <div style="margin-left:5px;">Jeff Schoonover</div>
+    </a>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-start" fxHide.xs>
+    <ul fxLayout fxLayoutGap="20px" class="menu-items">
+      <li><a [routerLink]="['/about']">About</a></li>
+      <li><a [routerLink]="['/learn']">Learn in Public</a></li>
+      <li><a [routerLink]="['/projects']">Projects</a></li>
+    </ul>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.gt-xs>
+    <a class="valign-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="additional links">
+      <mat-icon>more_vert</mat-icon>
+    </a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/about']">About</button>
+      <button mat-menu-item [routerLink]="['/learn']">Learn in Public</button>
+      <button mat-menu-item [routerLink]="['/projects']">Projects</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+-->

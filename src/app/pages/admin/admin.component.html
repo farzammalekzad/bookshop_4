@@ -1,0 +1,101 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>اضافه نمودن کتاب به کتابخانه</h3>
+      <hr>
+    </div>
+  </div>
+
+
+  <div fxFlex fxLayout="column"
+       fxLayoutAlign="center center"
+       dir="rtl"
+        *ngIf="!loading">
+    <form [formGroup]="form" (ngSubmit)="sendBook()" class="form">
+      <mat-form-field class="form-element">
+        <input matInput placeholder="نام کتاب" formControlName="title">
+        <mat-error *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element" appearance="fill">
+        <mat-label>دسته بندی مربوطه</mat-label>
+        <mat-select formControlName="cat">
+          <mat-option  *ngFor="let cName of category" [value]="cName._id">
+            {{cName.field}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="نویسنده کتاب" formControlName="author">
+        <mat-error *ngIf="!form.controls['author'].valid && form.controls['author'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element" appearance="fill">
+        <mat-label>توضیحات</mat-label>
+        <textarea rows="7" formControlName="description" matInput placeholder="توضیحات در مورد کتاب"></textarea>
+        <mat-error *ngIf="!form.controls['description'].valid && form.controls['description'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element" appearance="fill">
+        <mat-label>نوع نسخه</mat-label>
+        <mat-select formControlName="fullVersion">
+          <mat-option value="true">
+            نسخه کامل
+          </mat-option>
+          <mat-option value="false">
+            نسخه نمونه
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="!form.controls['fullVersion'].valid && form.controls['fullVersion'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!form.valid">ثبت کتاب</button>
+      </div>
+    </form>
+    <div class="form">
+      <input type="file" class="file-input" (change)="onImageSelected($event)"  #fileUpload>
+      <div class="form-element">
+        <button mat-raised-button (click)="fileUpload.click()" color="accent" type="button" class="button">آپلود عکس روی جلد کتاب و دریافت لینک نمایش آن</button>
+      </div>
+
+      <div class="form-element-2" *ngIf="imageDownloadLink">
+        <div #container>
+          <button mat-raised-button color="warn" ngxClipboard [cbContent]='imageDownloadLink' [container]="container">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <mat-label class="ml-2">{{imageDownloadLink}}</mat-label>
+      </div>
+
+
+
+      <input type="file" class="file-input" accept="application/pdf" (change)="onBookSelected($event)"  #bookUpload>
+      <div class="form-element">
+        <button mat-raised-button color="accent" (click)="bookUpload.click()" type="button" class="button">آپلود فایل کتاب و دریافت لینک دانلود آن</button>
+      </div>
+
+      <div class="form-element-2" *ngIf="bookDownloadLink">
+        <div #container>
+          <button mat-raised-button color="warn" ngxClipboard [cbContent]='bookDownloadLink' [container]="container">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <mat-label class="ml-2">{{bookDownloadLink}}</mat-label>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner><h4>در حال بارگذاری....</h4>
+  </div>
+
+</div>
