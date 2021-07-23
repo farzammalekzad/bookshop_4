@@ -1,10 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../../DTO/book.service";
 import {HttpClient, HttpEventType} from "@angular/common/http";
 import {AcademicModel} from "../../model/academic.model";
-import {Subscription} from "rxjs";
-import {finalize} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +11,7 @@ import {finalize} from "rxjs/operators";
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  @ViewChild('fform') formDirective
   form: FormGroup;
   category: AcademicModel[];
   loading = false;
@@ -33,8 +33,14 @@ export class AdminComponent implements OnInit {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      image: new FormControl(null),
-      pdf: new FormControl(null),
+      imageUrl: new FormControl(null, {
+        updateOn: "blur",
+        validators: [Validators.required]
+      }),
+      pdfUrl: new FormControl(null, {
+        updateOn: "blur",
+        validators: [Validators.required]
+      }),
       description: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.minLength(10)]
@@ -58,12 +64,31 @@ export class AdminComponent implements OnInit {
 
 
    sendBook() {
-     this.loading = true;
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 500)
      console.log(this.form.value);
-     setTimeout(() => {
-       this.loading = false
-       this.form.reset();
-     }, 2000);
+     this.bookService.sendBook(
+       this.form.value.title,
+       this.form.value.author,
+       this.form.value.imageUrl,
+       this.form.value.pdfUrl,
+       this.form.value.description,
+       this.form.value.fullVersion,
+       this.form.value.cat
+     ).subscribe((resData) => {
+       console.log(resData);
+       this.form.reset({
+         title: '',
+         author: '',
+         imageUrl: '',
+         pdfUrl: '',
+         description: '',
+         fullVersion: false
+       });
+       this.formDirective.resetForm();
+     });
 
   }
 

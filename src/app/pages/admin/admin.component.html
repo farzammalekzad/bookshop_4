@@ -14,7 +14,7 @@
        fxLayoutAlign="center center"
        dir="rtl"
         *ngIf="!loading">
-    <form [formGroup]="form" (ngSubmit)="sendBook()" class="form">
+    <form [formGroup]="form" #fform="ngForm" (ngSubmit)="sendBook()" class="form">
       <mat-form-field class="form-element">
         <input matInput placeholder="نام کتاب" formControlName="title">
         <mat-error *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
@@ -32,6 +32,18 @@
       <mat-form-field class="form-element">
         <input matInput placeholder="نویسنده کتاب" formControlName="author">
         <mat-error *ngIf="!form.controls['author'].valid && form.controls['author'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="لینک دانلود عکس" formControlName="imageUrl">
+        <mat-error *ngIf="!form.controls['imageUrl'].valid && form.controls['imageUrl'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="لینک دانلود کتاب" formControlName="pdfUrl">
+        <mat-error *ngIf="!form.controls['pdfUrl'].valid && form.controls['pdfUrl'].touched">
           <p>تکمیل این فیلد اجباری می باشد</p>
         </mat-error>
       </mat-form-field>

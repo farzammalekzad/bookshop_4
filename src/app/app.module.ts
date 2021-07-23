@@ -10,7 +10,6 @@ import {MatButtonModule} from "@angular/material/button";
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
@@ -32,6 +31,13 @@ import { AdminComponent } from './pages/admin/admin.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ClipboardModule} from "ngx-clipboard";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { LoginComponent } from './pages/login/login.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { PanelComponent } from './pages/panel/panel.component';
+import { AddCatComponent } from './pages/add-cat/add-cat.component';
+import { DeleteComponent } from './pages/delete/delete.component';
+import {MatTableModule} from "@angular/material/table";
+
 
 @NgModule({
   declarations: [
@@ -41,7 +47,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     FooterComponent,
     BooksComponent,
     BookdetailComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent,
+    PanelComponent,
+    AddCatComponent,
+    DeleteComponent
   ],
     imports: [
         BrowserModule,
@@ -52,7 +62,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         MatListModule,
         MatGridListModule,
         MatCardModule,
-        MatDialogModule,
         MatInputModule,
         MatCheckboxModule,
         MatSelectModule,
@@ -68,7 +77,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         MatDividerModule,
         ReactiveFormsModule,
         ClipboardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule,
+        MatTableModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]

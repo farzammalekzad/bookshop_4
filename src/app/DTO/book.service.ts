@@ -2,8 +2,24 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {AcademicModel} from "../model/academic.model";
 import {HttpClient} from "@angular/common/http";
-import {finalize, map} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {BookModel} from "../model/book.model";
+import {RespModel} from "../model/resp.model";
+
+interface BookData {
+  title: string;
+  author: string;
+  imageUrl: string;
+  pdfUrl: string;
+  description: string;
+  fullVersion: boolean;
+}
+
+interface CategoryData {
+  field: string;
+  imageUrl: string;
+  description: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +65,29 @@ export class BookService {
     return this.http.post<string>('http://localhost:3000/upload/book', uploadData);
   }
 
+  public sendBook(title: string, author: string, imageUrl: string, pdfUrl: string, description: string, fullVersion: boolean, categoryId) {
+    const newBook: BookData = {
+      title,
+      author,
+      imageUrl,
+      pdfUrl,
+      description,
+      fullVersion
+    };
+   return this.http.post<BookModel>(`http://localhost:3000/academic/category/${categoryId}`, newBook);
+  }
+
+  public setNewCategory(field: string, imageUrl: string, description: string) {
+    const newCategory: CategoryData = {
+      field,
+      imageUrl,
+      description
+    }
+  return this.http.post<AcademicModel>('http://localhost:3000/academic/category', newCategory);
+  }
+
+  public deleteCategory(categoryId: any) {
+    return this.http.delete<RespModel>(`http://localhost:3000/academic/category/${categoryId}`);
+  }
 
 }

@@ -1,0 +1,79 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>حذف دسته بندی</h3>
+      <hr>
+    </div>
+  </div>
+
+
+  <div fxFlex fxLayout="column"
+       fxLayoutAlign="center center"
+       dir="rtl">
+    <form novalidate [formGroup]="form" #fform (ngSubmit)="deleteCategory()" class="form">
+      <mat-form-field class="form-element">
+        <input matInput placeholder="ایدی دسته بندی مد نظر را وارد نمایید" formControlName="categoryId" >
+        <mat-error *ngIf="!form.controls['categoryId'].valid && form.controls['categoryId'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!form.valid"  >حذف دسته بندی</button>
+      </div>
+    </form>
+  </div>
+
+  <div fxFlex>
+    <div>
+      <h3>اطلاعات دسته بندی ها</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex dir="rtl">
+    <table mat-table class="table_cat" [dataSource]="categoryData" class="mat-elevation-z8" >
+      <ng-container matColumnDef="field">
+        <th mat-header-cell *matHeaderCellDef> نام دسته کتاب ها </th>
+        <td mat-cell *matCellDef="let element"> {{element.field}} </td>
+      </ng-container>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> کد دسته کتاب ها </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="imageUrl">
+        <th mat-header-cell *matHeaderCellDef> آدرس عکس دسته </th>
+        <td mat-cell *matCellDef="let element"> {{element.imageUrl}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div fxFlex class="mt-5">
+    <div>
+      <h3>حذف کتاب</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex fxLayout="column"
+       fxLayoutAlign="center center"
+       dir="rtl">
+    <form novalidate [formGroup]="form_2"  (ngSubmit)="deleteBook()" class="form">
+      <mat-form-field class="form-element">
+        <input matInput placeholder="ایدی کتاب مد نظر را وارد نمایید" formControlName="bookId" >
+        <mat-error *ngIf="!form_2.controls['bookId'].valid && form_2.controls['bookId'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!form_2.valid"  >حذف کتاب</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+

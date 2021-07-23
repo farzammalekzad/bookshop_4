@@ -4,4 +4,6 @@ export interface MenuModel {
   showOnMobile: boolean;
   showOnTablet: boolean;
   showOnDesktop: boolean;
+  method: any;
+  router: string;
 }

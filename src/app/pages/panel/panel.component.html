@@ -1,0 +1,66 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>مدیریت کتاب ها</h3>
+      <hr>
+    </div>
+  </div>
+  <div  fxFlex
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="space center"
+       fxLayoutAlign.sm="space center"
+       fxLayoutAlign.gt-sm="space center"
+       fxLayoutGap="10px">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title><h4>اضافه نمودن دسته بندی </h4> </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="./assets/img/add_category.png" alt="">
+        <mat-card-content>
+          <p>
+          در این بخش شما می توانید یه دسته جدید برای کتاب ها اضافه کنید
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" routerLink="add_category" >ورود به این بخش</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title><h4>اضافه نمودن کتاب </h4> </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="./assets/img/add_book.png" alt="">
+        <mat-card-content>
+          <p>
+            در این بخش شما می توانید کتاب های جدید را اضافه کنید
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" routerLink="add_book" >ورود به این بخش</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title><h4>حذف دسته بندی / کتاب</h4> </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="./assets/img/delete_blue.png" alt="">
+        <mat-card-content>
+          <p>
+            حذف دسته و کتاب در این بخش می تواند انجام پذیرد
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" routerLink="delete" >ورود به این بخش</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+
+
+  <div fxFlex class="mb-5"></div>
+
+</div>
