@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../../DTO/book.service";
 import {AcademicModel} from "../../model/academic.model";
+import {BookModel} from "../../model/book.model";
 
 const ELEMENT_DATA: AcademicModel[] = [
 ];
@@ -17,7 +18,7 @@ export class DeleteComponent implements OnInit {
   form: FormGroup;
   form_2: FormGroup;
   categoryData: AcademicModel[];
-  dataSource: AcademicModel[];
+  bookData: [BookModel][];
   errMess: string;
 
   constructor(private bookService: BookService) {
@@ -32,6 +33,10 @@ export class DeleteComponent implements OnInit {
       bookId: new FormControl(null, {
         updateOn: "blur",
         validators: [Validators.required]
+      }),
+      catId: new FormControl(null, {
+        updateOn: "blur",
+        validators: [Validators.required]
       })
     });
   };
@@ -41,7 +46,6 @@ export class DeleteComponent implements OnInit {
       if (ctg === null) {
         this.bookService.getCategory().subscribe((ctg) => {
           this.bookService.setCategory(ctg);
-          this.dataSource = ctg;
         }, (errmess) => {
           this.errMess = errmess;
           console.log(errmess);
@@ -49,8 +53,6 @@ export class DeleteComponent implements OnInit {
       } else {
         this.bookService.getCurrentCategory().subscribe((ctg) => {
           this.categoryData = ctg;
-          this.dataSource = ctg;
-          console.log(this.dataSource);
         });
       }
     });
@@ -66,6 +68,12 @@ export class DeleteComponent implements OnInit {
 
   deleteBook() {
 
+  }
+
+  getAllBooks() {
+    this.bookService.getAllBooks().subscribe((books) => {
+      console.log(books);
+    })
   }
 
 }

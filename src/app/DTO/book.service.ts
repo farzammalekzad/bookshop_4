@@ -53,6 +53,11 @@ export class BookService {
     return this.getBooks(categoryId).pipe(map((books) => books.find(book => book._id == bookId)));
   }
 
+  public getAllBooks(): Observable<[BookModel][]> {
+    return this.category.pipe(map((cats) => cats.map((books) => books.books)))
+  }
+
+
   public uploadImageBook(image: File) {
     const uploadData = new FormData();
     uploadData.append('image', image);

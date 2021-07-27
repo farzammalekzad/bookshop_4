@@ -64,15 +64,28 @@
        dir="rtl">
     <form novalidate [formGroup]="form_2"  (ngSubmit)="deleteBook()" class="form">
       <mat-form-field class="form-element">
+        <input matInput placeholder="ایدی دسته مربوطه را وارد نمایید" formControlName="catId" >
+        <mat-error *ngIf="!form_2.controls['catId'].valid && form_2.controls['catId'].touched">
+          <p>تکمیل این فیلد اجباری می باشد</p>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-element">
         <input matInput placeholder="ایدی کتاب مد نظر را وارد نمایید" formControlName="bookId" >
         <mat-error *ngIf="!form_2.controls['bookId'].valid && form_2.controls['bookId'].touched">
           <p>تکمیل این فیلد اجباری می باشد</p>
         </mat-error>
       </mat-form-field>
       <div class="form-element">
-        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!form_2.valid"  >حذف کتاب</button>
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!form_2.valid" (click)="getAllBooks()" >حذف کتاب</button>
       </div>
     </form>
+  </div>
+
+  <div fxFlex>
+    <div>
+      <h3>اطلاعات کتاب ها</h3>
+      <hr>
+    </div>
   </div>
 
 </div>
