@@ -30,7 +30,7 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   public getCategory(): Observable<[AcademicModel]> {
-    return this.http.get<[AcademicModel]>('http://localhost:3000/academic/category');
+    return this.http.get<[AcademicModel]>('/academic/category');
   }
 
   public getCurrentCategory() {
@@ -54,20 +54,20 @@ export class BookService {
   }
 
   public getAllBooks(): Observable<[BookModel][]> {
-    return this.category.pipe(map((cats) => cats.map((books) => books.books)))
+    return this.category.pipe(map((cats) => cats.map((books) => books.books)));
   }
 
 
   public uploadImageBook(image: File) {
     const uploadData = new FormData();
     uploadData.append('image', image);
-    return this.http.post<string>('http://localhost:3000/upload/image', uploadData);
+    return this.http.post<string>('/upload/image', uploadData);
   }
 
   public uploadBook(book: File) {
     const uploadData = new FormData();
     uploadData.append('book', book);
-    return this.http.post<string>('http://localhost:3000/upload/book', uploadData);
+    return this.http.post<string>('/upload/book', uploadData);
   }
 
   public sendBook(title: string, author: string, imageUrl: string, pdfUrl: string, description: string, fullVersion: boolean, categoryId) {
@@ -79,7 +79,7 @@ export class BookService {
       description,
       fullVersion
     };
-   return this.http.post<BookModel>(`http://localhost:3000/academic/category/${categoryId}`, newBook);
+   return this.http.post<BookModel>(`/academic/category/${categoryId}`, newBook);
   }
 
   public setNewCategory(field: string, imageUrl: string, description: string) {
@@ -88,11 +88,15 @@ export class BookService {
       imageUrl,
       description
     }
-  return this.http.post<AcademicModel>('http://localhost:3000/academic/category', newCategory);
+  return this.http.post<AcademicModel>('/academic/category', newCategory);
   }
 
   public deleteCategory(categoryId: any) {
-    return this.http.delete<RespModel>(`http://localhost:3000/academic/category/${categoryId}`);
+    return this.http.delete<RespModel>(`/academic/category/${categoryId}`);
+  }
+
+  public deleteBook(categoryId: string, bookId: string) {
+    return this.http.delete<RespModel>(`/academic/${categoryId}/books/${bookId}`);
   }
 
 }

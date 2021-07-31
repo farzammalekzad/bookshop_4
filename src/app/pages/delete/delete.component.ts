@@ -15,10 +15,11 @@ const ELEMENT_DATA: AcademicModel[] = [
 
 export class DeleteComponent implements OnInit {
   displayedColumns: string[] = ['field', 'id', 'imageUrl'];
+  displayedColumns_2: string[] = ['title', 'id'];
   form: FormGroup;
   form_2: FormGroup;
   categoryData: AcademicModel[];
-  bookData: [BookModel][];
+  bookData: BookModel[] = [];
   errMess: string;
 
   constructor(private bookService: BookService) {
@@ -55,6 +56,10 @@ export class DeleteComponent implements OnInit {
           this.categoryData = ctg;
         });
       }
+      setTimeout(() => {
+       this.getAllBooks();
+      }, 1000);
+
     });
 
   }
@@ -67,12 +72,17 @@ export class DeleteComponent implements OnInit {
   }
 
   deleteBook() {
+    this.bookService.deleteBook(this.form_2.value.catId, this.form_2.value.bookId).subscribe((resp) => {
+      console.log(resp);
+    })
 
   }
 
   getAllBooks() {
+    let book = [];
     this.bookService.getAllBooks().subscribe((books) => {
-      console.log(books);
+      books.forEach((x) => x.map((y) => book.push(y)));
+      this.bookData = book;
     })
   }
 

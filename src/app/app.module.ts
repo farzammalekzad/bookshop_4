@@ -22,7 +22,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { BooksComponent } from './pages/books/books.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { BookdetailComponent } from './pages/bookdetail/bookdetail.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
@@ -37,6 +37,8 @@ import { PanelComponent } from './pages/panel/panel.component';
 import { AddCatComponent } from './pages/add-cat/add-cat.component';
 import { DeleteComponent } from './pages/delete/delete.component';
 import {MatTableModule} from "@angular/material/table";
+import {interceptor} from "./utils/interceptor";
+import {CookieService} from "ngx-cookie-service";
 
 
 @NgModule({
@@ -82,7 +84,12 @@ import {MatTableModule} from "@angular/material/table";
         MatTableModule
 
     ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: interceptor,
+    multi: true
+  },
+  CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
