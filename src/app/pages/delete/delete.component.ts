@@ -45,15 +45,15 @@ export class DeleteComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getCurrentCategory().subscribe((ctg) => {
       if (ctg === null) {
-        this.bookService.getCategory().subscribe((ctg) => {
-          this.bookService.setCategory(ctg);
+        this.bookService.getCategory().subscribe((cats) => {
+          this.bookService.setCategory(cats);
         }, (errmess) => {
           this.errMess = errmess;
           console.log(errmess);
         });
       } else {
-        this.bookService.getCurrentCategory().subscribe((ctg) => {
-          this.categoryData = ctg;
+        this.bookService.getCurrentCategory().subscribe((cats) => {
+          this.categoryData = cats;
         });
       }
       setTimeout(() => {
@@ -68,13 +68,13 @@ export class DeleteComponent implements OnInit {
     this.bookService.deleteCategory(this.form.value.categoryId).subscribe((resp) => {
       console.log(resp);
       window.location.reload();
-    })
+    });
   }
 
   deleteBook() {
     this.bookService.deleteBook(this.form_2.value.catId, this.form_2.value.bookId).subscribe((resp) => {
       console.log(resp);
-    })
+    });
 
   }
 
@@ -83,7 +83,7 @@ export class DeleteComponent implements OnInit {
     this.bookService.getAllBooks().subscribe((books) => {
       books.forEach((x) => x.map((y) => book.push(y)));
       this.bookData = book;
-    })
+    });
   }
 
 }

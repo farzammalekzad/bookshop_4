@@ -43,6 +43,8 @@ import { EditComponent } from './pages/edit/edit.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AboutComponent } from './common/about/about.component';
 import { SearchComponent } from './common/search/search.component';
+import { RequestComponent } from './pages/request/request.component';
+import { LogComponent } from './pages/log/log.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { SearchComponent } from './common/search/search.component';
     DeleteComponent,
     EditComponent,
     AboutComponent,
-    SearchComponent
+    SearchComponent,
+    RequestComponent,
+    LogComponent
   ],
     imports: [
         BrowserModule,

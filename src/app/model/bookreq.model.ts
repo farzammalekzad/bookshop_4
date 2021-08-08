@@ -1,8 +1,7 @@
 export interface BookreqModel {
-  name: string;
+  title: string;
   author: string;
-  description: string;
-  category: string;
-  mobile: string;
   email: string;
+  mobile: string;
+  description: string;
 }

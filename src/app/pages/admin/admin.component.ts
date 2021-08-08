@@ -53,9 +53,9 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getCurrentCategory().subscribe((ctg) => {
       if (ctg == null) {
-        this.bookService.getCategory().subscribe((ctg) => {
-          this.bookService.setCategory(ctg);
-          this.category = ctg;
+        this.bookService.getCategory().subscribe((cat) => {
+          this.bookService.setCategory(cat);
+          this.category = cat;
         });
       } else {
         this.category = ctg;

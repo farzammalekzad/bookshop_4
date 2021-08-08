@@ -12,6 +12,8 @@ import {GuardGuard} from './security/guard.guard';
 import {EditComponent} from './pages/edit/edit.component';
 import {AboutComponent} from './common/about/about.component';
 import {SearchComponent} from './common/search/search.component';
+import {RequestComponent} from './pages/request/request.component';
+import {LogComponent} from './pages/log/log.component';
 
 
 const routes: Routes = [
@@ -22,10 +24,12 @@ const routes: Routes = [
   {path: 'panel/add_category', component: AddCatComponent, canActivate: [GuardGuard]},
   {path: 'panel/delete', component: DeleteComponent, canActivate: [GuardGuard]},
   {path: 'panel', component: PanelComponent, canActivate: [GuardGuard]},
+  {path: 'panel/log', component: LogComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel/delete/edit/:cId', component: EditComponent, canActivate: [GuardGuard]},
   {path: 'about', component: AboutComponent},
-  {path: 'search', component: SearchComponent}
+  {path: 'search', component: SearchComponent},
+  {path: 'request', component: RequestComponent}
 ];
 
 @NgModule({

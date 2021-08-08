@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {map, switchMap, take, tap} from 'rxjs/operators';
 import {BookModel} from "../model/book.model";
 import {RespModel} from "../model/resp.model";
+import {BookreqModel} from '../model/bookreq.model';
 
 interface BookData {
   title: string;
@@ -111,9 +112,13 @@ export class BookService {
 
    }
 
-   /*public downloadPdf(categoryId: string, bookId: string) {
-    return this.http.get(`/uploads/books/`);
-   }*/
+   public requestBook(Data: BookreqModel) {
+    return this.http.post<RespModel>('/request', Data);
+   }
+
+   public getRequest() {
+    return this.http.get<BookreqModel[]>('/request');
+   }
 
 
 }
