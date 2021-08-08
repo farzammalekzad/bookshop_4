@@ -25,18 +25,18 @@ export class DeleteComponent implements OnInit {
   constructor(private bookService: BookService) {
     this.form = new FormGroup({
       categoryId: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required]
       })
     });
 
     this.form_2 = new FormGroup({
       bookId: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required]
       }),
       catId: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required]
       })
     });

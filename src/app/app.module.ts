@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -17,28 +17,32 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatIconModule} from "@angular/material/icon";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatIconModule} from '@angular/material/icon';
 import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { BooksComponent } from './pages/books/books.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BookdetailComponent } from './pages/bookdetail/bookdetail.component';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatDividerModule} from "@angular/material/divider";
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 import { AdminComponent } from './pages/admin/admin.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {ClipboardModule} from "ngx-clipboard";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {ReactiveFormsModule} from '@angular/forms';
+import {ClipboardModule} from 'ngx-clipboard';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LoginComponent } from './pages/login/login.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from '@angular/material/dialog';
 import { PanelComponent } from './pages/panel/panel.component';
 import { AddCatComponent } from './pages/add-cat/add-cat.component';
 import { DeleteComponent } from './pages/delete/delete.component';
-import {MatTableModule} from "@angular/material/table";
-import {interceptor} from "./utils/interceptor";
-import {CookieService} from "ngx-cookie-service";
+import {MatTableModule} from '@angular/material/table';
+import {interceptor} from './utils/interceptor';
+import {CookieService} from 'ngx-cookie-service';
+import { EditComponent } from './pages/edit/edit.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AboutComponent } from './common/about/about.component';
+import { SearchComponent } from './common/search/search.component';
 
 
 @NgModule({
@@ -53,12 +57,16 @@ import {CookieService} from "ngx-cookie-service";
     LoginComponent,
     PanelComponent,
     AddCatComponent,
-    DeleteComponent
+    DeleteComponent,
+    EditComponent,
+    AboutComponent,
+    SearchComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        SweetAlert2Module.forRoot(),
         MatToolbarModule,
         MatButtonModule,
         MatListModule,

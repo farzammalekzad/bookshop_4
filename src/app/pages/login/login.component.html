@@ -30,12 +30,27 @@
       <div class="form-element">
         <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!loginForm.valid" >ورود</button>
       </div>
-
     </form>
-
   </div>
-
-
-
-
 </div>
+
+<swal
+  #SwalSuccess
+  title="خوش آمدید"
+  icon="success"
+  >
+</swal>
+
+<swal
+  #SwalFail
+  title="نام کاربری یا رمز عبور صحیح نمی‌باشد"
+  icon="warning"
+>
+</swal>
+
+<swal
+  #SwalFound
+  title="کاربری یافت نشد"
+  icon="error"
+>
+</swal>

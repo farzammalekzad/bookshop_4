@@ -90,7 +90,7 @@
 
 
 
-      <input type="file" class="file-input" accept="application/pdf" (change)="onBookSelected($event)"  #bookUpload>
+      <input type="file" class="file-input" (change)="onBookSelected($event)"  #bookUpload>
       <div class="form-element">
         <button mat-raised-button color="accent" (click)="bookUpload.click()" type="button" class="button">آپلود فایل کتاب و دریافت لینک دانلود آن</button>
       </div>
@@ -111,3 +111,10 @@
   </div>
 
 </div>
+
+<swal
+  #SwalSuccess
+  title="کتاب با موفقیت در بانک اطلاعاتی ذخیره شد"
+  icon="success"
+>
+</swal>

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuModel} from "../../model/menu.model";
-import {LoginComponent} from "../../pages/login/login.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MenuModel} from '../../model/menu.model';
 
 @Component({
   selector: 'app-header',
@@ -45,7 +43,7 @@ export class HeaderComponent implements OnInit {
       showOnTablet: false,
       showOnDesktop: true,
       method: '',
-      router: 'null'
+      router: 'search'
     },
     {
       label: 'درباره من',
@@ -54,7 +52,7 @@ export class HeaderComponent implements OnInit {
       showOnTablet: false,
       showOnDesktop: true,
       method: '',
-      router: 'null'
+      router: 'about'
     },
     {
       label: 'پنل مدیریتی',
@@ -62,16 +60,19 @@ export class HeaderComponent implements OnInit {
       showOnMobile: false,
       showOnTablet: false,
       showOnDesktop: true,
-      method: 'onclick()',
+      method: '',
       router: 'login'
     }
   ];
 
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
+  goUrl() {
+    (window as any).open('http://mohammad-malekzad.ir/', '_blank');
+  }
 
 
 }

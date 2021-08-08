@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {UserModel} from "../model/user.model";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
 
 interface RespAuth {
   status: string,

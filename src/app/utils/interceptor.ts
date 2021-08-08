@@ -1,8 +1,8 @@
 import {HttpHandler, HttpInterceptor, HttpRequest, HttpEvent} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {DomainUrl} from "./domain";
-import {CookieService} from "ngx-cookie-service";
-import {Injectable} from "@angular/core";
+import {Observable} from 'rxjs';
+import {DomainUrl} from './domain';
+import {CookieService} from 'ngx-cookie-service';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

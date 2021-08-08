@@ -1,4 +1,19 @@
 .example-card {
-  max-width: 330px;
-  margin: 10px;
+  width: 400px;
+  text-align: center!important;
+  margin: 10px 10px;
 }
+
+img {
+  width: 240px;
+  height: 310px;
+}
+mat-card-title {
+  font-size: medium!important;
+}
+
+mat-card-content {
+  font-size: small !important;
+}
+
+

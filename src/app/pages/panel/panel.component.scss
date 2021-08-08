@@ -1,6 +1,7 @@
 .example-card {
   max-width: 300px;
   margin: 10px;
+  text-align: center;
 }
 
 .example-header-image {
@@ -12,4 +13,9 @@ mat-grid-tile-footer {
 }
 mat-grid-tile {
   margin-bottom: 40px;
+}
+
+.example-card img {
+  width: 128px;
+  height: 128px;
 }

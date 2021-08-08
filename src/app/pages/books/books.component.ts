@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from "../../DTO/book.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import {BookModel} from "../../model/book.model";
 import {map} from "rxjs/operators";
 import {AcademicModel} from "../../model/academic.model";
@@ -16,10 +16,12 @@ export class BooksComponent implements OnInit {
   category: AcademicModel;
 
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) {
+  constructor(private bookService: BookService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('cId');
-    })
+    });
   }
 
 
@@ -39,5 +41,10 @@ export class BooksComponent implements OnInit {
         });
       }
     });
+  }
+
+  download(url: string): void {
+    const encodedUrl = encodeURI(url);
+    (window as any).open(encodedUrl, '_blank');
   }
 }

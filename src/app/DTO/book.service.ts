@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {AcademicModel} from "../model/academic.model";
 import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {map, switchMap, take, tap} from 'rxjs/operators';
 import {BookModel} from "../model/book.model";
 import {RespModel} from "../model/resp.model";
 
@@ -13,6 +13,13 @@ interface BookData {
   pdfUrl: string;
   description: string;
   fullVersion: boolean;
+}
+
+interface RespPostBook {
+  message: string;
+  status: string;
+  book: BookModel;
+
 }
 
 interface CategoryData {
@@ -34,11 +41,11 @@ export class BookService {
   }
 
   public getCurrentCategory() {
-    return this.category;
+    return this.category.asObservable();
   }
 
   public getCurrentCategoryById(id: string): Observable<AcademicModel> {
-    return this.getCurrentCategory().pipe(map((ctg) => ctg.find((x) => x._id == id)));
+    return this.getCurrentCategory().pipe(map((ctg) => ctg.find((x) => x._id === id)));
   }
 
   public setCategory(data) {
@@ -50,7 +57,7 @@ export class BookService {
   }
 
   public getBook(categoryId: string, bookId: string): Observable<BookModel> {
-    return this.getBooks(categoryId).pipe(map((books) => books.find(book => book._id == bookId)));
+    return this.getBooks(categoryId).pipe(map((books) => books.find(book => book._id === bookId)));
   }
 
   public getAllBooks(): Observable<[BookModel][]> {
@@ -77,9 +84,9 @@ export class BookService {
       imageUrl,
       pdfUrl,
       description,
-      fullVersion
+      fullVersion,
     };
-   return this.http.post<BookModel>(`/academic/category/${categoryId}`, newBook);
+    return this.http.post<RespPostBook>(`/academic/category/${categoryId}`, newBook);
   }
 
   public setNewCategory(field: string, imageUrl: string, description: string) {
@@ -87,8 +94,8 @@ export class BookService {
       field,
       imageUrl,
       description
-    }
-  return this.http.post<AcademicModel>('/academic/category', newCategory);
+    };
+    return this.http.post<RespModel>('/academic/category', newCategory);
   }
 
   public deleteCategory(categoryId: any) {
@@ -98,5 +105,15 @@ export class BookService {
   public deleteBook(categoryId: string, bookId: string) {
     return this.http.delete<RespModel>(`/academic/${categoryId}/books/${bookId}`);
   }
+
+   public editCategory(newCategory: AcademicModel) {
+      return this.http.put<RespModel>(`/academic/category/${newCategory._id}`, newCategory);
+
+   }
+
+   /*public downloadPdf(categoryId: string, bookId: string) {
+    return this.http.get(`/uploads/books/`);
+   }*/
+
 
 }

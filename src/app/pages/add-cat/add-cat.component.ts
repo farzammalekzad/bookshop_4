@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {BookService} from "../../DTO/book.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {BookService} from '../../DTO/book.service';
+import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-add-cat',
@@ -11,22 +12,23 @@ export class AddCatComponent implements OnInit {
 
   form: FormGroup;
   imageDownloadLink: string;
-  loading: boolean = false;
-  @ViewChild('fform') formDirective;
+  loading = false;
+  @ViewChild('SwalFail') public readonly SwalFail: SwalComponent;
+  @ViewChild('SwalSuccess') public readonly SwalSuccess: SwalComponent;
 
 
   constructor(public bookService: BookService) {
     this.form = new FormGroup({
       field: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required]
       }),
       imageUrl: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required]
       }),
       description: new FormControl(null, {
-        updateOn: "blur",
+        updateOn: 'blur',
         validators: [Validators.required, Validators.minLength(10)]
       })
     });
@@ -54,13 +56,12 @@ export class AddCatComponent implements OnInit {
       this.form.value.imageUrl,
       this.form.value.description
     ).subscribe((resData) => {
-      console.log(resData);
-      this.form.reset({
-        field: '',
-        imageUrl: '',
-        description: ''
-      });
-      this.formDirective.resetForm();
+      if (resData.status === 'success') {
+        this.SwalSuccess.fire();
+        this.form.reset();
+      }
+    }, error => {
+      this.SwalFail.fire();
     });
   }
 

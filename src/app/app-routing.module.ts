@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MainComponent} from "./pages/main/main.component";
-import {BooksComponent} from "./pages/books/books.component";
-import {BookdetailComponent} from "./pages/bookdetail/bookdetail.component";
-import {AdminComponent} from "./pages/admin/admin.component";
-import {LoginComponent} from "./pages/login/login.component";
-import {PanelComponent} from "./pages/panel/panel.component";
-import {AddCatComponent} from "./pages/add-cat/add-cat.component";
-import {DeleteComponent} from "./pages/delete/delete.component";
-import {GuardGuard} from "./security/guard.guard";
+import {MainComponent} from './pages/main/main.component';
+import {BooksComponent} from './pages/books/books.component';
+import {BookdetailComponent} from './pages/bookdetail/bookdetail.component';
+import {AdminComponent} from './pages/admin/admin.component';
+import {LoginComponent} from './pages/login/login.component';
+import {PanelComponent} from './pages/panel/panel.component';
+import {AddCatComponent} from './pages/add-cat/add-cat.component';
+import {DeleteComponent} from './pages/delete/delete.component';
+import {GuardGuard} from './security/guard.guard';
+import {EditComponent} from './pages/edit/edit.component';
+import {AboutComponent} from './common/about/about.component';
+import {SearchComponent} from './common/search/search.component';
 
 
 const routes: Routes = [
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'panel/add_category', component: AddCatComponent, canActivate: [GuardGuard]},
   {path: 'panel/delete', component: DeleteComponent, canActivate: [GuardGuard]},
   {path: 'panel', component: PanelComponent, canActivate: [GuardGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'panel/delete/edit/:cId', component: EditComponent, canActivate: [GuardGuard]},
+  {path: 'about', component: AboutComponent},
+  {path: 'search', component: SearchComponent}
 ];
 
 @NgModule({

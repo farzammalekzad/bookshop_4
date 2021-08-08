@@ -4,7 +4,8 @@
           [fxShow]="item.showOnDesktop"
           [fxShow.xs]="item.showOnMobile"
           [fxShow.sm]="item.showOnTablet"
-           [routerLink]="[item.router]" >
+          [routerLink]="[item.router]"
+          (click)="item.method">
     <mat-icon class="mr">{{item.icon}}</mat-icon>
     {{item.label}}
   </button>
@@ -16,7 +17,8 @@
       <ng-container *ngFor="let item of menuItems">
         <div [fxShow]="!item.showOnDesktop"
              [fxShow.sm]="!item.showOnTablet"
-             [fxShow.xs]="!item.showOnMobile">
+             [fxShow.xs]="!item.showOnMobile"
+             [routerLink]="[item.router]">
           <button mat-menu-item class="font">
             <mat-icon class="mr">{{item.icon}}</mat-icon>
             {{item.label}}
@@ -42,7 +44,7 @@
     <p fxHide.xs="true">مهمترین کتاب های مرجع هر رشته بصورت مجزا جهت دور زدن تحریم ها جمع آوری شده و در اختیار هموطنان عزیزم قرار می گیرد هزینه های دریافتی از دانلود کتاب ها تنها جهت نگهداری بانک اطلاعاتی و خرید کتاب های بیشتر برای شما عزیزان مورد استفاده قرار خواهد گرفت</p>
   </div>
   <div fxLayoutAlign="center" fxFlex fxFlex.gt-sm="50%"   >
-    <img height=100 width=120 src="/assets/img/book2.png" alt="Logo">
+    <img height=130 width=120 src="/assets/img/book.png" alt="Logo">
   </div>
 </div>
 
