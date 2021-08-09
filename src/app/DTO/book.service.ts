@@ -6,6 +6,7 @@ import {map, switchMap, take, tap} from 'rxjs/operators';
 import {BookModel} from "../model/book.model";
 import {RespModel} from "../model/resp.model";
 import {BookreqModel} from '../model/bookreq.model';
+import {SearchBookModel} from '../model/searchBook.model';
 
 interface BookData {
   title: string;
@@ -118,6 +119,10 @@ export class BookService {
 
    public getRequest() {
     return this.http.get<BookreqModel[]>('/request');
+   }
+
+   public searchBook(title: string) {
+    return this.http.post<SearchBookModel[]>('/search', {title});
    }
 
 
