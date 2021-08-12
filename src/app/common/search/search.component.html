@@ -5,7 +5,7 @@
   <div fxFlex>
     <div>
       <h3>جستجوی پیشرفته</h3>
-      <p>عنوان کتاب را در فرم زیر جستجو کنید نتایج دریافتی را می‌توانید از طریق فرم درخواست اعلام نموده و در اسرع وقت کتاب مد نظر بصورت فایل الکترونیکی در اختیارتان قرار می‌گیرد (ممکن است این فرایند نیازمند هزینه باشد) </p>
+      <p>عنوان کتاب را در فرم زیر جستجو کنید نتایج دریافتی را می‌توانید از طریق فرم درخواست اعلام نموده و در اسرع وقت کتاب مد نظر بصورت فایل الکترونیکی در اختیارتان قرار می‌گیرد (ممکن است این فرایند نیازمند هزینه باشد ضمنا بانک اطلاعاتی به کتاب‌های یافت شده محدود نمی‌باشد) </p>
       <hr>
     </div>
   </div>
@@ -17,7 +17,7 @@
     <form novalidate [formGroup]="form" (ngSubmit)="search()"  class="form" *ngIf="!loading">
       <mat-form-field class="form-element">
         <mat-label>عنوان کتاب</mat-label>
-        <input matInput formControlName="title">
+        <input dir="ltr" matInput formControlName="title">
         <mat-error *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
           <p> این فیلد حداقل باید دارای ۸ کارکتر باشد</p>
         </mat-error>

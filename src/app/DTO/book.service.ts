@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {AcademicModel} from "../model/academic.model";
-import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {AcademicModel} from '../model/academic.model';
+import {HttpClient} from '@angular/common/http';
 import {map, switchMap, take, tap} from 'rxjs/operators';
-import {BookModel} from "../model/book.model";
-import {RespModel} from "../model/resp.model";
+import {BookModel} from '../model/book.model';
+import {RespModel} from '../model/resp.model';
 import {BookreqModel} from '../model/bookreq.model';
 import {SearchBookModel} from '../model/searchBook.model';
+import {AppsModel} from '../model/apps.model';
 
 interface BookData {
   title: string;
@@ -125,5 +126,22 @@ export class BookService {
     return this.http.post<SearchBookModel[]>('/search', {title});
    }
 
+   public getApps() {
+    return this.http.get<AppsModel[]>('/apps');
+   }
 
+  public sendApp(name: string, imageUrl: string, description: string, appDownloadLink: string) {
+    const newApp: AppsModel = {
+      id: null,
+      name,
+      imageUrl,
+      description,
+      bazaarLink: appDownloadLink
+    };
+    return this.http.post<RespModel>(`/apps`, newApp);
+  }
+
+  public deleteApp(id: string) {
+    return this.http.delete<RespModel>(`/apps/${id}`);
+  }
 }

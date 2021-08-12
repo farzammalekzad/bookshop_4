@@ -9,10 +9,10 @@
       <div fxFlex="40" fxFlexOffset="20px">
         <h4>لینک ها</h4>
         <mat-list>
-          <mat-list-item><a mat-button routerLink="/home">خانه</a></mat-list-item>
-          <mat-list-item><a mat-button>اپلیکیشن در بازار</a></mat-list-item>
-          <mat-list-item><a mat-button routerLink="/menu">درخواست کتاب</a></mat-list-item>
-          <mat-list-item><a mat-button routerLink="/contactus">جستجوی پیشرفته</a></mat-list-item>
+          <mat-list-item><a mat-button [routerLink]="['']" >خانه</a></mat-list-item>
+          <mat-list-item><a mat-button>اپلیکیشن ها</a></mat-list-item>
+          <mat-list-item><a mat-button [routerLink]="['request']">درخواست کتاب</a></mat-list-item>
+          <mat-list-item><a mat-button [routerLink]="['search']">جستجوی پیشرفته</a></mat-list-item>
         </mat-list>
       </div>
       <div fxFlex="55">

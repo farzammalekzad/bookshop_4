@@ -45,6 +45,8 @@ import { AboutComponent } from './common/about/about.component';
 import { SearchComponent } from './common/search/search.component';
 import { RequestComponent } from './pages/request/request.component';
 import { LogComponent } from './pages/log/log.component';
+import { BazarComponent } from './common/bazar/bazar.component';
+import { OtherComponent } from './pages/other/other.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { LogComponent } from './pages/log/log.component';
     AboutComponent,
     SearchComponent,
     RequestComponent,
-    LogComponent
+    LogComponent,
+    BazarComponent,
+    OtherComponent
   ],
     imports: [
         BrowserModule,

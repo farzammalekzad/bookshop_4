@@ -27,7 +27,6 @@
             {{book.description}} </p>
         </mat-card-content>
         <mat-card-actions>
-<!--          <button mat-button [routerLink]="['detail', book._id]" >مشاهده جزئیات کتاب</button>-->
           <button class="mr-2" mat-flat-button color="accent" [disabled]="book.fullVersion" (click)="download(book.pdfUrl)" >دانلود نسخه نمونه</button>
           <button mat-flat-button color="primary" [disabled]="!book.fullVersion" (click)="download(book.pdfUrl)"  >دانلود نسخه کامل</button>
         </mat-card-actions>

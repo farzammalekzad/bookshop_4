@@ -14,6 +14,8 @@ import {AboutComponent} from './common/about/about.component';
 import {SearchComponent} from './common/search/search.component';
 import {RequestComponent} from './pages/request/request.component';
 import {LogComponent} from './pages/log/log.component';
+import {BazarComponent} from './common/bazar/bazar.component';
+import {OtherComponent} from './pages/other/other.component';
 
 
 const routes: Routes = [
@@ -27,9 +29,11 @@ const routes: Routes = [
   {path: 'panel/log', component: LogComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel/delete/edit/:cId', component: EditComponent, canActivate: [GuardGuard]},
+  {path: 'panel/other', component: OtherComponent},
   {path: 'about', component: AboutComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'request', component: RequestComponent}
+  {path: 'request', component: RequestComponent},
+  {path: 'apps', component: BazarComponent}
 ];
 
 @NgModule({

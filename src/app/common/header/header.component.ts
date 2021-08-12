@@ -19,13 +19,13 @@ export class HeaderComponent implements OnInit {
       router: ''
     },
     {
-      label: 'اپلیکیشن در بازار',
+      label: 'اپلیکیشن ها',
       icon: 'mobile_friendly',
       showOnMobile: false,
       showOnTablet: false,
       showOnDesktop: true,
       method: '',
-      router: 'null'
+      router: 'apps'
     },
     {
       label: 'درخواست کتاب',
@@ -69,10 +69,4 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  goUrl() {
-    (window as any).open('http://mohammad-malekzad.ir/', '_blank');
-  }
-
-
 }

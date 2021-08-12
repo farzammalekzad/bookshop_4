@@ -1,0 +1,43 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>اپلیکیشن های تولید شده</h3>
+      <p>در این بخش اپلیکیشن های توسعه داده شده نمایش داده می‌شود</p>
+      <hr>
+    </div>
+  </div>
+  <div fxFlex
+       fxLayout="row wrap"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="space center"
+       fxLayoutAlign.sm="space center"
+       fxLayoutAlign.gt-sm="start center"
+       *ngIf="!loading">
+    <div *ngFor="let app of apps">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>نام اپلیکیشن: {{app.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{app.imageUrl}}" alt="{{app.imageUrl}}">
+        <mat-card-content>
+          <p>
+            {{app.description}} </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary"  (click)="open(app.bazaarLink)">دانلود از طریق کافه بازار</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex class="mb-5"></div>
+
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner><h4>در حال بارگذاری....</h4>
+  </div>
+
+</div>
