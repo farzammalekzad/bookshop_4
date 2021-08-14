@@ -12,7 +12,6 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     (window as any).open('http://mohammad-malekzad.ir/', '_blank');
-    return this.router.navigate(['/']);
   }
 
 }
