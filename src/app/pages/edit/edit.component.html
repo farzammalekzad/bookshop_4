@@ -10,7 +10,7 @@
   </div>
 
 
-  <div fxFlex fxLayout="column"
+  <div *ngIf="!loading" fxFlex fxLayout="column"
        fxLayoutAlign="center center"
        dir="rtl">
     <form novalidate [formGroup]="form" (ngSubmit)="editCategory()"  class="form">
@@ -43,6 +43,15 @@
     </form>
   </div>
 
-
+  <div *ngIf="loading" class="cent">
+    <mat-spinner></mat-spinner><h4>در حال بارگذاری....</h4>
+  </div>
 
 </div>
+
+<swal
+  #SwalSuccess
+  title="بروزرسانی با موفقیت انجام شد"
+  icon="success"
+>
+</swal>

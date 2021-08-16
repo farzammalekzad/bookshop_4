@@ -1,0 +1,52 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>تغییر وضعیت درخواست</h3>
+      <hr>
+    </div>
+  </div>
+
+
+  <div *ngIf="!loading" fxFlex fxLayout="column"
+       fxLayoutAlign="center center"
+       dir="rtl">
+    <form novalidate [formGroup]="form2" (ngSubmit)="updateReq()"  class="form">
+      <mat-form-field class="form-element" appearance="fill">
+        <mat-label>وضعیت درخواست</mat-label>
+       <mat-select formControlName="status">
+          <mat-option value="true">
+            بسته
+          </mat-option>
+          <mat-option value="false">
+            باز
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button color="accent" type="submit" class="button" [disabled]="!form2.valid">بروزرسانی</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<div *ngIf="loading" class="loading">
+  <mat-spinner></mat-spinner><h4>در حال بارگذاری....</h4>
+</div>
+
+<swal
+  #SwalFound
+  title="درخواستی یافت نشد"
+  icon="error"
+>
+</swal>
+
+<swal
+  #SwalSuccess
+  title="بروزرسانی با موفقیت انجام شد"
+  icon="success"
+>
+</swal>

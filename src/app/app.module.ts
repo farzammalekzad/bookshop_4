@@ -23,7 +23,6 @@ import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { BooksComponent } from './pages/books/books.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { BookdetailComponent } from './pages/bookdetail/bookdetail.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
@@ -47,6 +46,7 @@ import { RequestComponent } from './pages/request/request.component';
 import { LogComponent } from './pages/log/log.component';
 import { BazarComponent } from './common/bazar/bazar.component';
 import { OtherComponent } from './pages/other/other.component';
+import { StatusComponent } from './pages/status/status.component';
 
 
 @NgModule({
@@ -56,7 +56,6 @@ import { OtherComponent } from './pages/other/other.component';
     MainComponent,
     FooterComponent,
     BooksComponent,
-    BookdetailComponent,
     AdminComponent,
     LoginComponent,
     PanelComponent,
@@ -68,7 +67,8 @@ import { OtherComponent } from './pages/other/other.component';
     RequestComponent,
     LogComponent,
     BazarComponent,
-    OtherComponent
+    OtherComponent,
+    StatusComponent
   ],
     imports: [
         BrowserModule,

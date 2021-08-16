@@ -109,8 +109,8 @@ export class BookService {
     return this.http.delete<RespModel>(`/academic/${categoryId}/books/${bookId}`);
   }
 
-   public editCategory(newCategory: AcademicModel) {
-      return this.http.put<RespModel>(`/academic/category/${newCategory._id}`, newCategory);
+   public editCategory(id: string, newCategory: AcademicModel) {
+      return this.http.put<RespModel>(`/academic/category/${id}`, newCategory);
 
    }
 
@@ -120,6 +120,10 @@ export class BookService {
 
    public getRequest() {
     return this.http.get<BookreqModel[]>('/request');
+   }
+
+   public getRequestById(id: string) {
+    return this.http.get<BookreqModel>(`/request/${id}`);
    }
 
    public searchBook(title: string) {
@@ -143,5 +147,9 @@ export class BookService {
 
   public deleteApp(id: string) {
     return this.http.delete<RespModel>(`/apps/${id}`);
+  }
+
+  public updateRequest(id: string, newReq: BookreqModel) {
+    return this.http.put<RespModel>(`/request/${id}`, newReq);
   }
 }

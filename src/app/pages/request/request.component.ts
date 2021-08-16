@@ -46,15 +46,18 @@ export class RequestComponent implements OnInit {
   sendRequest() {
     this.loading = true;
     const bookData: BookreqModel = {
+      _id: null,
       title: this.form.value.title,
       author: this.form.value.author,
       email: this.form.value.email,
       mobile: this.form.value.mobile,
-      description: this.form.value.description
+      description: this.form.value.description,
+      status: false
     };
     this.bookService.requestBook(bookData).subscribe((resp) => {
       this.loading = false;
       this.SwalSuccess.fire();
+      this.form.reset();
       console.log(resp);
     }, error => {
       this.loading = false;
