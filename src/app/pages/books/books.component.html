@@ -4,7 +4,7 @@
 
   <div fxFlex>
     <div>
-      <h3>کتاب های گروه {{category.field}}</h3>
+      <h3>کتاب های گروه  {{category.field}}</h3>
       <hr>
     </div>
   </div>
@@ -14,7 +14,8 @@
        fxLayout.xs="column"
        fxLayoutAlign.xs="space center"
        fxLayoutAlign.sm="space center"
-       fxLayoutAlign.gt-sm="start center">
+       fxLayoutAlign.gt-sm="start center"
+       *ngIf="!loading">
     <div *ngFor="let book of books">
       <mat-card class="example-card">
         <mat-card-header>
@@ -32,6 +33,10 @@
         </mat-card-actions>
       </mat-card>
     </div>
+  </div>
+
+  <div class="cent" *ngIf="loading">
+    <mat-spinner></mat-spinner><h4>در حال جستجو....</h4>
   </div>
 
   <div fxFlex class="mb-5"></div>

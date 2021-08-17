@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuModel} from '../../model/menu.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -65,8 +66,12 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
+  }
+
+  back() {
+    this.location.back();
   }
 }

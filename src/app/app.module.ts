@@ -47,6 +47,7 @@ import { LogComponent } from './pages/log/log.component';
 import { BazarComponent } from './common/bazar/bazar.component';
 import { OtherComponent } from './pages/other/other.component';
 import { StatusComponent } from './pages/status/status.component';
+import { NotfoundComponent } from './common/notfound/notfound.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { StatusComponent } from './pages/status/status.component';
     LogComponent,
     BazarComponent,
     OtherComponent,
-    StatusComponent
+    StatusComponent,
+    NotfoundComponent
   ],
     imports: [
         BrowserModule,
@@ -100,6 +102,9 @@ import { StatusComponent } from './pages/status/status.component';
         MatTableModule
 
     ],
+  exports: [
+    MatProgressBarModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: interceptor,

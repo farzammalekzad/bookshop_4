@@ -16,6 +16,7 @@ import {LogComponent} from './pages/log/log.component';
 import {BazarComponent} from './common/bazar/bazar.component';
 import {OtherComponent} from './pages/other/other.component';
 import {StatusComponent} from './pages/status/status.component';
+import {NotfoundComponent} from './common/notfound/notfound.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'request', component: RequestComponent},
   {path: 'apps', component: BazarComponent},
-  {path: 'panel/log/status/:requestId', component: StatusComponent, canActivate: [GuardGuard]}
+  {path: 'panel/log/status/:requestId', component: StatusComponent, canActivate: [GuardGuard]},
+  {path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({

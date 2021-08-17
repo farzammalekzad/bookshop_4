@@ -14,6 +14,7 @@ export class BooksComponent implements OnInit {
   id: string;
   books: BookModel[];
   category: AcademicModel;
+  loading = false;
 
 
   constructor(private bookService: BookService,
@@ -25,18 +26,20 @@ export class BooksComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.bookService.getCurrentCategory().subscribe((ctg) => {
-      console.log(ctg);
-      if (ctg === null) {
-        this.bookService.getCategory().subscribe((ctg) => {
-          this.bookService.setCategory(ctg);
+  ngOnInit() {
+    this.loading = true;
+    this.bookService.getCurrentCategory().subscribe((ctgs) => {
+      if (ctgs === null) {
+        this.bookService.getCategory().subscribe((cg) => {
+          this.bookService.setCategory(cg);
+          this.loading = false;
         });
       } else {
         this.bookService.getBooks(this.id).subscribe((books) => {
            this.books = books;
            this.bookService.getCurrentCategoryById(this.id).subscribe((ctg) => {
              this.category = ctg;
+             this.loading = false;
            });
         });
       }
