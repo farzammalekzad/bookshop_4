@@ -38,7 +38,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.authService.checkToken().subscribe((res) => {
+      if (res.status === 'success') {
+        const user = {
+          name: res.name,
+          token: res.token
+        };
+        this.authService.setCurrentUser(user);
+        return this.router.navigateByUrl('panel');
+      } else {
+        return this.router.navigateByUrl('login');
+      }
+    });
+
   }
 
   login() {

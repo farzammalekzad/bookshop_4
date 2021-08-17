@@ -25,15 +25,15 @@ const routes: Routes = [
   {path: 'panel/add_category', component: AddCatComponent, canActivate: [GuardGuard]},
   {path: 'panel/delete', component: DeleteComponent, canActivate: [GuardGuard]},
   {path: 'panel', component: PanelComponent, canActivate: [GuardGuard]},
-  {path: 'panel/log', component: LogComponent},
+  {path: 'panel/log', component: LogComponent, canActivate: [GuardGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'panel/delete/edit/:cId', component: EditComponent, canActivate: [GuardGuard]},
-  {path: 'panel/other', component: OtherComponent},
+  {path: 'panel/other', component: OtherComponent, canActivate: [GuardGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'search', component: SearchComponent},
   {path: 'request', component: RequestComponent},
   {path: 'apps', component: BazarComponent},
-  {path: 'panel/log/status/:requestId', component: StatusComponent}
+  {path: 'panel/log/status/:requestId', component: StatusComponent, canActivate: [GuardGuard]}
 ];
 
 @NgModule({

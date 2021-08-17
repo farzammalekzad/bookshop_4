@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {UserModel} from "../model/user.model";
+import {UserModel} from '../model/user.model';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 interface RespAuth {
-  status: string,
-  message: string,
-  token: string,
-  name: string
+  status: string;
+  message: string;
+  token: string;
+  name: string;
 }
 
 @Injectable({
@@ -43,9 +43,13 @@ export class AuthService {
   isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
       resolve(this.loggedIn);
-    })
+    });
 
     return promise;
+  }
+
+  checkToken(): Observable<RespAuth> {
+    return this.http.get<RespAuth>('/user/checkToken');
   }
 
 
